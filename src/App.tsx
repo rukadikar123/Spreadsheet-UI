@@ -1,13 +1,15 @@
-import Header from "./Components/Header"
-
+import Header from "./Components/Header";
+import TopBar from "./Components/TopBar";
 
 function App() {
-
   return (
     <>
-      <Header/>
+      <div className="h-[1024px]">
+        <Header />
+        <TopBar />
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
