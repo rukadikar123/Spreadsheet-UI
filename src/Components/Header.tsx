@@ -6,8 +6,8 @@ import avatar from "../assets/756f38a6ef8725586111b428053d87fea711b57d.png";
 import { useState } from "react";
 
 function Header() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   return (
     // Header layout: horizontal flex container
@@ -16,7 +16,7 @@ function Header() {
       <div className="flex flex-row   w-[343px] h-[24px] gap-[16px] text-gray-500">
         {/* Sidebar toggle button */}
         <div
-          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          onClick={() => setIsSidebarOpen(prev=>!prev)}
           className="flex cursor-pointer w-[24px] h-[24px]"
         >
           <VscLayoutSidebarRight className="text-[#618666] relative top-[4px] left-[2px] w-[20px] h-[16px]" />
@@ -82,7 +82,7 @@ function Header() {
           onClick={() => console.log("navigated to profile page")}
           className="w-8 h-8 rounded-full overflow-hidden cursor-pointer"
         >
-          <img src={avatar} alt="" />
+          <img src={avatar} alt="User avatar" />
         </div>
         <div className=" flex flex-col  cursor-pointer">
           <h3 className="font-medium text-sm">John Doe</h3>

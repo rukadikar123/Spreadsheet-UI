@@ -1,82 +1,53 @@
 import React, { useState } from "react";
 
+// type for all tab options
+type TabOption = "all-orders" | "pending" | "reviewed" | "arrived" | "+";
 function TitleRow() {
   // State to track which tab is currently selected
-  const [selected, setSelected] = useState("all-orders");
+  const [selected, setSelected] = useState<TabOption>("all-orders");
 
-  // Handles button click, sets the selected state, and logs navigation
+  // Handles button click with proper event typing
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const name = (e.target as HTMLButtonElement).name;
+    const name = e.currentTarget.name as TabOption;
     setSelected(name);
-    console.log(`navigated to ${name} `);
+    console.log(`navigated to ${name}`);
   };
+
   return (
-    <div className="w-full h-[48px] border-t-[1px]  pt-[4px] pr-[16px] pl-[32px]">
-      {/* Container for tab buttons */}
+    <div className="w-full h-[48px] border-t-[1px] pt-[4px] pr-[16px] pl-[32px]">
       <div className="flex w-[437px] h-[44px]">
-        {/* All Orders Tab */}
-        <button
-          name="all-orders"
-          onClick={handleClick}
-          className={`w-[111px]  py-[10px] px-[16px] ${
-            selected === "all-orders"
-              ? "bg-[#E8F0E9]  text-[#3E5741] border-t-[2px] border-[#4B6A4F]"
-              : "text-[#757575]"
-          }  font-[600] text-[16px]  `}
-        >
-          All Orders
-        </button>
-        {/* Pending Tab */}
-        <button
-          name="pending"
-          onClick={handleClick}
-          className={`w-[94px]  py-[10px] px-[16px]  font-[500] ${
-            selected === "pending"
-              ? "bg-[#E8F0E9]  text-[#3E5741] border-t-[2px] border-[#4B6A4F] "
-              : "text-[#757575]"
-          } text-[16px]`}
-        >
-          Pending
-        </button>
-        {/* Reviewed Tab */}
-        <button
-          name="reviewed"
-          onClick={handleClick}
-          className={`w-[107px]  py-[10px] px-[16px] ${
-            selected === "reviewed"
-              ? "bg-[#E8F0E9]  text-[#3E5741] border-t-[2px] border-[#4B6A4F]"
-              : "text-[#757575] "
-          }  font-[500] text-[16px] `}
-        >
-          Reviewed
-        </button>
-        {/* Arrived Tab */}
-        <button
-          name="arrived"
-          onClick={handleClick}
-          className={`w-[89px]  py-[10px] ${
-            selected === "arrived"
-              ? "bg-[#E8F0E9]  text-[#3E5741]  border-t-[2px] border-[#4B6A4F] "
-              : "text-[#757575]"
-          } px-[16px]  font-[500] text-[16px] `}
-        >
-          Arrived
-        </button>
-        {/* Add (+) Button */}
-        <button
-          name="+"
-          onClick={handleClick}
-          className={`w-[36px]  py-[10px] px-[16px] ${
-            selected === "+"
-              ? "bg-[#E8F0E9]  text-[#3E5741] border-t-[2px] border-[#4B6A4F] "
-              : "text-[#757575]"
-          }  font-[500] text-[16px] `}
-        >
-          +
-        </button>
+        {[
+          { label: "All Orders", value: "all-orders" },
+          { label: "Pending", value: "pending" },
+          { label: "Reviewed", value: "reviewed" },
+          { label: "Arrived", value: "arrived" },
+          { label: "+", value: "+" },
+        ].map((tab) => (
+          <button
+            key={tab.value}
+            name={tab.value}
+            onClick={handleClick}
+            className={`py-[10px] px-[16px] ${
+              selected === tab.value
+                ? "bg-[#E8F0E9] text-[#3E5741] border-t-[2px] border-[#4B6A4F]"
+                : "text-[#757575]"
+            } font-[500] text-[16px] ${
+              tab.value === "all-orders"
+                ? "w-[111px]"
+                : tab.value === "pending"
+                ? "w-[94px]"
+                : tab.value === "reviewed"
+                ? "w-[107px]"
+                : tab.value === "arrived"
+                ? "w-[89px]"
+                : "w-[36px]"
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
       </div>
     </div>
   );
 }
-
 export default TitleRow;

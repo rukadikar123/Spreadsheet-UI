@@ -12,7 +12,18 @@ import { HiChevronDown } from "react-icons/hi";
 import { useState } from "react";
 
 // Sample spreadsheet data
-const data = [
+interface SpreadsheetRow {
+  job: string;
+  submitted: string;
+  status: string;
+  submitter: string;
+  url: string;
+  assigned: string;
+  priority: "Low" | "Medium" | "High";
+  due: string;
+  value: string;
+}
+const data: SpreadsheetRow[] = [
   {
     job: "Launch social media campaign for product",
     submitted: "15-11-2024",
@@ -72,7 +83,10 @@ const data = [
 
 function Spreadsheet() {
   // State to track which cell is selected for highlighting
-  const [selectedCell, setSelectedCell] = useState({ row: null, col: null });
+  const [selectedCell, setSelectedCell] = useState<{ row: number | null; col: number | null }>({
+    row: null,
+    col: null,
+  });
 
   return (
     <div className="w-full h-full overflow-auto">

@@ -12,7 +12,7 @@ import { useState } from "react";
 
 function TopBar() {
   // State to toggle visibility of the toolbar
-  const [isToolbarOpen, setIsToolbarOpen] = useState(true);
+  const [isToolbarOpen, setIsToolbarOpen] = useState<boolean>(true);
 
   return (
     <div className="flex items-center justify-between  max-w-full  h-[48px] border-b px-[8px] py-[6px] bg-[#FFFFFF] border-b-[#EEEEEE]">
@@ -35,7 +35,7 @@ function TopBar() {
           {/* Hide Fields */}
           <button
             onClick={() => console.log("hide fields")}
-            className="flex cursor-pointer   items-center gap-[4px]  w-[118px] h-[36] py-[8px] pl-[8px] pr-[12px]"
+            className="flex cursor-pointer   items-center gap-[4px]  w-[118px] h-[36px] py-[8px] pl-[8px] pr-[12px]"
           >
             <div className="w-[16px] h-[16px]">
               <LuEyeOff className="h-[16px] w-[16px] mt-[1px]" />
@@ -45,7 +45,7 @@ function TopBar() {
           {/* Sort */}
           <button
             onClick={() => console.log("sorting..")}
-            className="flex cursor-pointer   gap-[4px] items-center w-[73px] h-[36] py-[8px] pl-[8px] pr-[12px]"
+            className="flex cursor-pointer   gap-[4px] items-center w-[73px] h-[36px] py-[8px] pl-[8px] pr-[12px]"
           >
             <div className="w-[16px] h-[16px]">
               <LuArrowUpDown className="h-[16px] w-[16px] mt-[1px]" />
@@ -55,7 +55,7 @@ function TopBar() {
           {/* Filter */}
           <button
             onClick={() => console.log("filtereing")}
-            className="flex cursor-pointer   gap-[4px] items-center w-[80px] h-[36] py-[8px] pl-[8px] pr-[12px]"
+            className="flex cursor-pointer   gap-[4px] items-center w-[80px] h-[36px] py-[8px] pl-[8px] pr-[12px]"
           >
             <div className="w-[16px] h-[16px]">
               <IoFilter className="h-[16px] w-[16px] mt-[1px]" />
@@ -65,7 +65,7 @@ function TopBar() {
           {/* Cell View */}
           <button
             onClick={() => console.log("cell view")}
-            className="flex cursor-pointer   gap-[4px] items-center w-[105px] h-[36] py-[8px] pl-[8px] pr-[12px]"
+            className="flex cursor-pointer   gap-[4px] items-center w-[105px] h-[36px] py-[8px] pl-[8px] pr-[12px]"
           >
             <div className="w-[16px] h-[16px]">
               <TbArrowAutofitDown className="h-[16px] w-[16px] mt-[1px]" />
