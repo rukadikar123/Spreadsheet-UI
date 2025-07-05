@@ -1,69 +1,149 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite Spreadsheet UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Demo:** [Click here to view the live app]()
 
-Currently, two official plugins are available:
+This project is a spreadsheet-like UI built with React, TypeScript, Tailwind CSS, and Vite. It features a custom header, toolbar, spreadsheet table, and tabbed navigation at the bottom.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Structure
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```
+spreadsheet-ui/
+├── src/
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── Components/
+│       ├── Header.tsx
+│       ├── Spreadsheet.tsx
+│       ├── TitleRow.tsx
+│       └── TopBar.tsx
+├── package.json
+├── README.md
+└── ...
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+## Main Files Overview
 
-export default tseslint.config([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+### `src/App.tsx`
+
+- **Purpose:** Main application component that composes the layout.
+- **Structure:** Renders the `Header`, `TopBar`, `Spreadsheet`, and `TitleRow` components inside a flex column layout.
+
+### `src/main.tsx`
+
+- **Purpose:** Entry point for the React app.
+- **Functionality:** Uses React 19's `createRoot` to render the `App` component into the DOM.
+
+### `src/Components/Header.tsx`
+
+- **Purpose:** Top navigation bar.
+- **Features:**
+  - Sidebar toggle icon.
+  - Breadcrumb navigation (Workspace > Folder 2 > Spreadsheet 3).
+  - Search input.
+  - Notification bell with badge.
+  - User avatar and profile info.
+
+### `src/Components/Spreadsheet.tsx`
+
+- **Purpose:** Main spreadsheet table UI.
+- **Features:**
+  - Table with fixed columns and styled headers.
+  - Sample data for demonstration.
+  - Clickable cells with highlight on selection.
+  - Status, priority, and other fields with color coding.
+  - Action icons in headers.
+
+### `src/Components/TitleRow.tsx`
+
+- **Purpose:** Tab navigation at the bottom of the UI.
+- **Features:**
+  - Tabs for "All Orders", "Pending", "Reviewed", "Arrived", and an add (+) button.
+  - Highlights the selected tab.
+  - Logs navigation actions to the console.
+
+---
+
+## Getting Started
+
+1. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+
+2. **Run the development server:**
+   ```sh
+   npm run dev
+   ```
+
+3. **Build for production:**
+   ```sh
+   npm run build
+   ```
+
+---
+
+## Scripts
+
+- `dev` – Start Vite development server.
+- `build` – Type-check and build for production.
+- `lint` – Run ESLint on `.ts` and `.tsx` files.
+- `preview` – Preview the production build.
+- `format` – Format code with Prettier.
+- `type-check` – Run TypeScript type checking.
+
+---
+
+## ESLint & Prettier
+
+- ESLint is set up for React, TypeScript, and accessibility.
+- Prettier is used for code formatting.
+- See the comments in this file for expanding ESLint configuration.
+
+---
+
+## Dependencies
+
+- **React 19**
+- **Vite**
+- **Tailwind CSS**
+- **React Icons**
+- **TypeScript**
+
+---
+
+## File Summaries
+
+### `package.json`
+Defines project metadata, scripts, dependencies, and devDependencies.
+
+### `README.md`
+Project documentation and setup instructions.
+
+### `src/main.tsx`
+App entry point; renders the main `App` component.
+
+### `src/App.tsx`
+Main layout; composes header, toolbar, spreadsheet, and tab row.
+
+### `src/Components/Header.tsx`
+Top navigation bar with breadcrumbs, search, notifications, and user info.
+
+### `src/Components/Spreadsheet.tsx`
+Spreadsheet table UI with sample data, clickable cells, and styled headers.
+
+### `src/Components/TitleRow.tsx`
+Bottom tab navigation for switching between order views.
+
+---
+
+## Customization
+
+- Update the sample data in `Spreadsheet.tsx` as needed.
+- Adjust Tailwind classes for custom styling.
+- Extend components for more features (editing, filtering, etc).
+
+---
+
+
