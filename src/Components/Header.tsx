@@ -10,8 +10,11 @@ function Header() {
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
+    // Header layout: horizontal flex container
     <header className="flex items-center h-[56px] justify-between px-[16px] w-full  py-[8px] bg-white border-b border-b-[#EEEEEE] text-sm font-medium">
+      {/* Left section */}
       <div className="flex flex-row   w-[343px] h-[24px] gap-[16px] text-gray-500">
+        {/* Sidebar toggle button */}
         <div
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           className="flex cursor-pointer w-[24px] h-[24px]"
@@ -46,8 +49,10 @@ function Header() {
           </div>
         </div>
       </div>
+      {/* Right section */}
       <div className="flex items-center gap-[8px] w-[325px] h-[40px]">
         <div className="flex w-[165px] h-[40px] bg-[#F6F6F6] rounded-[6px] p-[12px] gap-[8px]">
+          {/* Search input */}
           <div className="h-[16px] w-[6px] cursor-pointer">
             <FiSearch
               onClick={() => console.log("search button clicked")}
@@ -62,6 +67,7 @@ function Header() {
             className="w-[117px] h-[16px] outline-none font-[400] text-[12px] leading-[16px] text-[#757575] py-2 ml-3  rounded text-sm"
           />
         </div>
+        {/* Notification bell with badge */}
         <div className="relative cursor-pointer">
           <FiBell
             onClick={() => console.log("opening navigation popup")}
@@ -71,6 +77,7 @@ function Header() {
             3
           </span>
         </div>
+        {/* User avatar */}
         <div
           onClick={() => console.log("navigated to profile page")}
           className="w-8 h-8 rounded-full overflow-hidden cursor-pointer"

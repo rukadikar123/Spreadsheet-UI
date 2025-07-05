@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
 function TitleRow() {
+  // State to track which tab is currently selected
   const [selected, setSelected] = useState("all-orders");
 
+  // Handles button click, sets the selected state, and logs navigation
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const name = (e.target as HTMLButtonElement).name;
     setSelected(name);
@@ -10,7 +12,9 @@ function TitleRow() {
   };
   return (
     <div className="w-full h-[48px] border-t-[1px]  pt-[4px] pr-[16px] pl-[32px]">
+      {/* Container for tab buttons */}
       <div className="flex w-[437px] h-[44px]">
+        {/* All Orders Tab */}
         <button
           name="all-orders"
           onClick={handleClick}
@@ -22,6 +26,7 @@ function TitleRow() {
         >
           All Orders
         </button>
+        {/* Pending Tab */}
         <button
           name="pending"
           onClick={handleClick}
@@ -33,6 +38,7 @@ function TitleRow() {
         >
           Pending
         </button>
+        {/* Reviewed Tab */}
         <button
           name="reviewed"
           onClick={handleClick}
@@ -44,6 +50,7 @@ function TitleRow() {
         >
           Reviewed
         </button>
+        {/* Arrived Tab */}
         <button
           name="arrived"
           onClick={handleClick}
@@ -55,6 +62,7 @@ function TitleRow() {
         >
           Arrived
         </button>
+        {/* Add (+) Button */}
         <button
           name="+"
           onClick={handleClick}

@@ -11,6 +11,7 @@ import { MdEmojiEmotions } from "react-icons/md";
 import { HiChevronDown } from "react-icons/hi";
 import { useState } from "react";
 
+// Sample spreadsheet data
 const data = [
   {
     job: "Launch social media campaign for product",
@@ -70,6 +71,7 @@ const data = [
 ];
 
 function Spreadsheet() {
+  // State to track which cell is selected for highlighting
   const [selectedCell, setSelectedCell] = useState({ row: null, col: null });
 
   return (
@@ -77,6 +79,7 @@ function Spreadsheet() {
       <div className=" flex flex-col">
         <div className="max-h-[855px] ">
           <table className="table-fixed w-full border-collapse">
+            {/* Define fixed column widths */}
             <colgroup>
               <col className="w-[32px]" />
               <col className="w-[256px]" />
@@ -90,6 +93,7 @@ function Spreadsheet() {
               <col className="w-[124px]" />
               <col className="w-[124px]" />
             </colgroup>
+            {/* Table headers */}
             <thead className="sticky top-0 bg-white z-10">
               <tr className="bg-[#E2E2E2] text-xs w-[631px] font-medium h-[32px]">
                 <th className="w-[32px] bg-white"></th>
@@ -242,11 +246,15 @@ function Spreadsheet() {
                 <th className="w-[124px] bg-white"></th>
               </tr>
             </thead>
-
+            {/* Table body with 25 rows */}
             <tbody>
               {Array.from({ length: 25 }).map((_, i) => (
                 <tr key={i} className="h-[32px] ">
-                  <td className={`border border-gray-300 text-center font-[400] `}>{i + 1}</td>
+                  <td
+                    className={`border border-gray-300 text-center font-[400] `}
+                  >
+                    {i + 1}
+                  </td>
                   <td
                     onClick={() => setSelectedCell({ row: i, col: 1 })}
                     className={`border border-gray-300 text-[12px] px-2 font-[400]  truncate whitespace-nowrap overflow-hidden text-[#121212] ${
