@@ -100,16 +100,12 @@ function Spreadsheet() {
                 <th colSpan={4} className=" text-left px-2">
                   <div className="flex items-center p-[4px] bg-[#EEEEEE] w-[170px]">
                     <div
-                      onClick={() =>
-                        console.log("Q3 Financial Overview opened")
-                      }
+                      onClick={() => console.log("Q3 Financial Overview opened")}
                       className="flex items-center gap-[4px] cursor-pointer"
                     >
                       {" "}
                       <FaLink className="text-blue-400 text-sm" />
-                      <span className="text-[#545454]">
-                        Q3 Financial Overview
-                      </span>
+                      <span className="text-[#545454]">Q3 Financial Overview</span>
                     </div>
                     <TiArrowSync
                       onClick={() => console.log("data refreshed")}
@@ -250,11 +246,7 @@ function Spreadsheet() {
             <tbody>
               {Array.from({ length: 25 }).map((_, i) => (
                 <tr key={i} className="h-[32px] ">
-                  <td
-                    className={`border border-gray-300 text-center font-[400] `}
-                  >
-                    {i + 1}
-                  </td>
+                  <td className={`border border-gray-300 text-center font-[400] `}>{i + 1}</td>
                   <td
                     onClick={() => setSelectedCell({ row: i, col: 1 })}
                     className={`border border-gray-300 text-[12px] px-2 font-[400]  truncate whitespace-nowrap overflow-hidden text-[#121212] ${
@@ -288,11 +280,10 @@ function Spreadsheet() {
                         data[i]?.status === "In-process"
                           ? "bg-[#FFF3D6] text-[#85640B]"
                           : data[i]?.status === "Need to start"
-                          ? "bg-[#E2E8F0] text-[#475569]"
-                          : data[i]?.status === "Complete"
-                          ? "bg-[#D3F2E3] text-[#0A6E3D]"
-                          : data[i]?.status === "Blocked" &&
-                            "bg-[#FFE1DE] text-[#C22219]"
+                            ? "bg-[#E2E8F0] text-[#475569]"
+                            : data[i]?.status === "Complete"
+                              ? "bg-[#D3F2E3] text-[#0A6E3D]"
+                              : data[i]?.status === "Blocked" && "bg-[#FFE1DE] text-[#C22219]"
                       }   text-[12px]  font-[500]  px-2 py-1 h-[24px] w-[80px] rounded-full`}
                     >
                       {data[i]?.status || ""}
@@ -334,8 +325,8 @@ function Spreadsheet() {
                       data[i]?.priority && data[i]?.priority === "Medium"
                         ? "text-[#C29210]"
                         : data[i]?.priority === "Low"
-                        ? "text-[#1A8CFF]"
-                        : data[i]?.priority === "High" && "text-[#EF4D44]"
+                          ? "text-[#1A8CFF]"
+                          : data[i]?.priority === "High" && "text-[#EF4D44]"
                     } ${
                       selectedCell.row === i && selectedCell.col === 7
                         ? "border-2 border-green-600 shadow-lg"

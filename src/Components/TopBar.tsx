@@ -20,13 +20,8 @@ function TopBar() {
       <div className="flex ">
         {/* Toolbar label and toggle icon */}
         <div className="flex items-center gap-[4px] w-[91px] h-[36px] p-[4px]">
-          <h3 className="w-[55px] h-[20px] font-[400] text-[14px] leading-[20px]">
-            Tool bar
-          </h3>
-          <div
-            onClick={() => setIsToolbarOpen(!isToolbarOpen)}
-            className="w-[16px] h-[16px]"
-          >
+          <h3 className="w-[55px] h-[20px] font-[400] text-[14px] leading-[20px]">Tool bar</h3>
+          <div onClick={() => setIsToolbarOpen(!isToolbarOpen)} className="w-[16px] h-[16px]">
             <MdKeyboardDoubleArrowRight className="h-[12px] w-[12px] mt-[4px] cursor-pointer" />
           </div>
         </div>
@@ -45,9 +40,7 @@ function TopBar() {
             <div className="w-[16px] h-[16px]">
               <LuEyeOff className="h-[16px] w-[16px] mt-[1px]" />
             </div>
-            <h3 className="font-[400] text-[14px] leading-[20px]">
-              Hide fields
-            </h3>
+            <h3 className="font-[400] text-[14px] leading-[20px]">Hide fields</h3>
           </button>
           {/* Sort */}
           <button
