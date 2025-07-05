@@ -16,7 +16,7 @@ function Header() {
       <div className="flex flex-row   w-[343px] h-[24px] gap-[16px] text-gray-500">
         {/* Sidebar toggle button */}
         <div
-          onClick={() => setIsSidebarOpen(prev=>!prev)}
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           className="flex cursor-pointer w-[24px] h-[24px]"
         >
           <VscLayoutSidebarRight className="text-[#618666] relative top-[4px] left-[2px] w-[20px] h-[16px]" />
