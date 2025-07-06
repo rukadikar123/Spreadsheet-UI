@@ -9,7 +9,7 @@ import { IoPerson } from "react-icons/io5";
 import { TbWorld } from "react-icons/tb";
 import { MdEmojiEmotions } from "react-icons/md";
 import { HiChevronDown } from "react-icons/hi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Sample spreadsheet data
 interface SpreadsheetRow {
@@ -87,6 +87,46 @@ function Spreadsheet() {
     row: null,
     col: null,
   });
+
+  useEffect(() => {
+    // Function to handle keyboard arrow navigation
+    const handlekeyNavigation = (e: KeyboardEvent) => {
+      // Exit early if no cell is selected
+      if (selectedCell.row === null || selectedCell.col === null) return;
+
+      // Destructure current selected cell
+      let { row, col } = selectedCell;
+
+      // Determine the direction of movement based on the key pressed
+      switch (e.key) {
+        case "ArrowUp":
+          row = Math.max(0, row - 1);
+          break;
+        case "ArrowDown":
+          row = Math.min(24, row + 1);
+          break;
+        case "ArrowLeft":
+          col = Math.max(1, col - 1);
+          break;
+        case "ArrowRight":
+          col = Math.min(10, col + 1);
+          break;
+        default:
+          return;
+      }
+      e.preventDefault();
+      // Update the selected cell state
+      setSelectedCell({ row, col });
+    };
+
+    // Attach keydown event listener to window
+    window.addEventListener("keydown", handlekeyNavigation);
+
+    // Cleanup event listener when component unmounts or selectedCell changes
+    return () => {
+      window.removeEventListener("keydown", handlekeyNavigation);
+    };
+  }, [selectedCell]); // Re-run this effect whenever selectedCell changes
 
   return (
     <div className="w-full h-full overflow-auto">
@@ -275,7 +315,7 @@ function Spreadsheet() {
                     onClick={() => setSelectedCell({ row: i, col: 2 })}
                     className={`border border-gray-300 px-2 text-[12px] font-[400] text-right text-[#121212] ${
                       selectedCell.row === i && selectedCell.col === 2
-                        ? "border-2 border-green-600 shadow-lg"
+                        ? "border-2 border-green-600 shadow-lg "
                         : ""
                     }`}
                   >
@@ -290,15 +330,17 @@ function Spreadsheet() {
                     }`}
                   >
                     <span
-                      className={`data[i]?.status && "inline-flex items-center justify-center  ${
+                      className={`inline-flex items-center justify-center   ${
                         data[i]?.status === "In-process"
                           ? "bg-[#FFF3D6] text-[#85640B]"
                           : data[i]?.status === "Need to start"
                             ? "bg-[#E2E8F0] text-[#475569]"
                             : data[i]?.status === "Complete"
                               ? "bg-[#D3F2E3] text-[#0A6E3D]"
-                              : data[i]?.status === "Blocked" && "bg-[#FFE1DE] text-[#C22219]"
-                      }   text-[12px]  font-[500]  px-2 py-1 h-[24px] w-[80px] rounded-full`}
+                              : data[i]?.status === "Blocked"
+                                ? "bg-[#FFE1DE] text-[#C22219]"
+                                : ""
+                      }   text-[12px]  font-[500]  px-2 py-1 h-[24px] w-[100px] rounded-full`}
                     >
                       {data[i]?.status || ""}
                     </span>
